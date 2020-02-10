@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行星与飞船</title>
+    <style>
+        body,html{
+            height: 100%;
+            width: 100%;
+            /* background: url(../../css/image/x17.jpg); */
+            background-color:#02071d;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .background{
+            width: 100%;
+            height: 100%;
+            
+            position:absolute;
+        }
+        .plant-1{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url(../../css/image/x10.jpg);
+            background-size: 40px 40px;
+            top:100px;
+            left: 300px;
+        }
+        .plant-2{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url(../../css/image/x11.jpg);
+            background-size: 40px 40px;
+            top: 150px;
+            left: 750px;
+        }
+        .plant-3{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url(../../css/image/x12.jpg);
+            background-size: 40px 40px;
+            top:400px;
+            left: 350px;
+        }
+        .plant-4{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: url(../../css/image/x4.jpg);
+            background-size: 30px 30px;
+            top:500px;
+            left: 750px;
+        }
+        .rotating{
+            position: absolute;
+            animation:rotating 50s linear infinite;
+        }
+        @keyframes rotating{
+            0%{transform: rotateX(0deg);}
+            100%{transform: rotateX(360deg);}
+        }
+        #layout{
+            width: 800px;
+            height: 680px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .plant,.orbite1,.orbite2,.orbite3,.orbite4,.craft-model-1,
+        .craft-model-2,.craft-model-3,.craft-model-4, .hole-1{
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+        #layout .plant{
+            width: 250px;
+            height: 250px;
+            background:rgb(44, 38, 38);
+            animation:plant 50s linear infinite;
+        }
+        @keyframes plant {
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+            
+        }
+        .plant .hole-1{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+          
+            background: url(../../css/image/x15.jpg);
+            background-size:120px 120px;
+            
+        }
+        .plant .hole-2{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            background: url(../../css/image/x16.jpg);
+            background-size:30px 30px;
+            top:110px;
+            left: 110px;
+        }
+        .plant .hole-3{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            background: url(../../css/image/x17.jpg);
+            background-size:40px 40px;
+            top:170px;
+            left: 170px;
+        }
+        .orbite1{
+            width: 350px;
+            height: 350px;
+        }
+        .orbite2{
+            width: 450px;
+            height: 450px;
+        }
+        .orbite3{
+            width: 550px;
+            height: 550px;
+        }
+        .orbite4{
+            width: 650px;
+            height: 650px;
+        }
+        .orbite-1,.orbite-2,.orbite-3,.orbite-4{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #3e4095;
+        }
+        .control-wrapper{
+            width: 90%;
+            height: 150px;
+            margin: 0 auto;
+            display: flex;
+            position: relative;
+            border-radius: 10px;
+            border: 2px dotted #3b3f58;
+        }
+        .control-wrapper .control{
+            flex: 7;
+            color: #d9e6cd;
+        }
+        .control-wrapper .console{
+            flex: 3;
+            color: #d9e6cd;
+            border-left: 2px dotted #3b3f58;
+        }
+        .control .craft-control{
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            margin: 40px 40px;
+            list-style: none;
+            cursor: pointer;
+        }
+        .craft-control span{
+            display: inline-block;
+            width: 60px;  
+            border-radius: 50%;
+            background: violet;
+            line-height: 60px;
+            text-align: center;
+        }
+        .control .operates{display:inline-block}
+        .control [class*=operate]{display:none;position:absolute;list-style:none}
+        .control .operate-2{left:40px;top:15px}
+        .control .operate-3{left:20px;top:50px}
+        .control .craft-control.selected [class*=operate]{display:inline-block}
+        .control .craft-control.hidden{display:none}
+        .control [class*=operate] button{width:25px;height:25px;background-color:#d1e8d6;color:#32a39d;border:none;font-size:.75rem;border-radius:50%;cursor:pointer;outline:none}
+        .control [class*=operate] [class*=forbid]{opacity:.5}.control .operate-1{left:20px;top:-20px}
+        .select{width: 300px;height: 200px;position: absolute;top:50px;left:70px}
+        .select select{padding: 6px 10px;margin: 5px;border-radius: 10px;}
+        .craft-model-1{display:none;width:360px;height:40px}
+        .craft-model-1 .craft-inner{float:right;position:relative;width:20px;height:40px;border-radius:10px;background-color:#d9e6cd;text-align:center;overflow:hidden}
+        .craft-model-1 .craft-inner span{display:block;position:relative;line-height:40px;font-size:.75rem;z-index:9;color:#02071d;transform:rotate(-90deg)}
+        .craft-model-1 .craft-inner .energy{position:absolute;width:100%;height:100%;bottom:0;background-color:#2fa06c;z-index:0}
+        .craft-model-2{display:none;width:460px;height:40px}
+        .craft-model-2 .craft-inner{float:right;position:relative;width:20px;height:40px;border-radius:10px;background-color:#d9e6cd;text-align:center;overflow:hidden}
+        .craft-model-2 .craft-inner span{display:block;position:relative;line-height:40px;font-size:.75rem;z-index:9;color:#02071d;transform:rotate(-90deg)}
+        .craft-model-2 .craft-inner .energy{position:absolute;width:100%;height:100%;bottom:0;background-color:#2fa06c;z-index:0}
+        .craft-model-3{display:none;width:560px;height:40px}
+        .craft-model-3 .craft-inner{float:right;position:relative;width:20px;height:40px;border-radius:10px;background-color:#d9e6cd;text-align:center;overflow:hidden}
+        .craft-model-3 .craft-inner span{display:block;position:relative;line-height:40px;font-size:.75rem;z-index:9;color:#02071d;transform:rotate(-90deg)}
+        .craft-model-3 .craft-inner .energy{position:absolute;width:100%;height:100%;bottom:0;background-color:#2fa06c;z-index:0}
+        .craft-model-4{display:none;width:660px;height:40px}
+        .craft-model-4 .craft-inner{float:right;position:relative;width:20px;height:40px;border-radius:10px;background-color:#d9e6cd;text-align:center;overflow:hidden}
+        .craft-model-4 .craft-inner span{display:block;position:relative;line-height:40px;font-size:.75rem;z-index:9;color:#02071d;transform:rotate(-90deg)}
+        .craft-model-4 .craft-inner .energy{position:absolute;width:100%;height:100%;bottom:0;background-color:#2fa06c;z-index:0}
+        .hidden{display:none}
+        .visible{display:block}
+        .console p{font-size:.7em}
+        .play{position:absolute; left: 560px;top:280px;padding: 50px 50px;z-index:3;opacity: 0;}
+        .swith{position: absolute;left: 140px;transform: rotate(-40deg);transform-origin: 5px 5px;}
+ </style>
+</head>
+<body>
+    <section class="background">
+        <button class="play">播放</button>
+        <div class="select">
+            <select name="rate" id="rate-select"></select>
+            <select name="system" id="system-select"></select>
+        </div>
+        <div class="plant-1 rotating">
+            
+        </div>
+        <div class="plant-2 rotating">
+            
+        </div>
+        <div class="plant-3 rotating">
+            
+        </div>
+        <div class="plant-4 rotating">
+           
+        </div>
+    </section>
+    <section id="layout">
+        <div class="plant">
+            
+            <div class="hole-1"></div>
+            <!-- <div class="hole-2"></div>
+            <div class="hole-3"></div> -->
+        </div>
+        <div class="orbite1">
+            <div class="swith"><img src="swith.png" height="130px"></div>
+            <div class="orbite-1"></div>
+        </div>
+        <div class="orbite2">
+            <div class="orbite-2"></div>
+        </div>
+        <div class="orbite3">
+            <div class="orbite-3"></div>
+        </div>
+        <div class="orbite4">
+            <div class="orbite-4"></div>
+        </div>
+
+    </section>
+    <section class="control-wrapper">
+            <section class="control">
+                <ul>
+                    <li class="craft-control hidden">
+                        <span>1号</span>
+                        <ul class="operates">
+                            <li class="operate-1"><button class="start-forbid"><i ><s></s></i></button></li>
+                            <li class="operate-1"><button class="start"><i >s</i></button></li>
+                            <li class="operate-2"><button class="stop-forbid"><i>p</i></button></li>
+                            <li class="operate-2"><button class="stop"><i>p</i></button></li>
+                            <li class="operate-3"><button class="destory"><i>o</i></button></li>
+                        </ul>
+                    </li>
+                    <li class="craft-control hidden">
+                        <span>2号</span>
+                        <ul class="operates">
+                            <li class="operate-1"><button class="start-forbid"><i >s</i></button></li>
+                            <li class="operate-1"><button class="start"><i >s</i></button></li>
+                            <li class="operate-2"><button class="stop-forbid"><i >p</i></button></li>
+                            <li class="operate-2"><button class="stop"><i >p</i></button></li>
+                            <li class="operate-3"><button class="destory"><i >o</i></button></li>
+                        </ul>
+                    </li>
+                    <li class="craft-control hidden">
+                        <span>3号</span>
+                        <ul class="operates">
+                            <li class="operate-1"><button class="start-forbid"><i >s</i></button></li>
+                            <li class="operate-1"><button class="start"><i >s</i></button></li>
+                            <li class="operate-2"><button class="stop-forbid"><i >p</i></button></li>
+                            <li class="operate-2"><button class="stop"><i >p</i></button></li>
+                            <li class="operate-3"><button class="destory"><i >o</i></button></li>
+                        </ul>
+                    </li>
+                    <li class="craft-control hidden">
+                        <span>4号</span>
+                        <ul class="operates">
+                            <li class="operate-1"><button class="start-forbid"><i>s</i></button></li>
+                            <li class="operate-1"><button class="start"><i >s</i></button></li>
+                            <li class="operate-2"><button class="stop-forbid"><i >p</i></button></li>
+                            <li class="operate-2"><button class="stop"><i >p</i></button></li>
+                            <li class="operate-3"><button class="destory"><i >o</i></button></li>
+                        </ul>
+                    </li>
+                    <li class="craft-control craft-add">
+                        <span>+</span>
+                    </li>
+                </ul>
+            </section>
+            <section class="console">
+        
+            </section>
+            <script src="../ife/utils.js"></script>
+             <script src="craftObj.js"></script>
+            <script src="command.js"></script>
+            <script src="mediator.js"></script>
+            <script src="ife.js"></script>
+</body>
+
+</html>

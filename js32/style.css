@@ -1,0 +1,94 @@
+
+
+
+
+ /*
+ task32
+  */
+ /* {
+     font-size: 14px;
+     font-family: "微软雅黑", Veranda;
+ } */
+ 
+ /*清除浮动*/
+ .clear-fix:after {
+     content: "";
+     display: block;
+     clear: both;
+ }
+ .clear-fix {
+     zoom: 1;
+ }
+ main{
+     width: 1200px;
+     margin:50px 0 0 50px;
+ }
+ 
+ main>div{
+     margin-bottom: 50px;
+ }
+ .config{
+     margin: 0px 100px 0px 0px;
+     float: left;
+ }
+ .config textarea{
+     width: 600px;
+     height: 300px;
+ }
+ section{
+     float: left;
+ }
+ #form1-factory,#form1-factory{
+     width: 430px;
+ }
+ 
+ section{
+     margin-bottom: 40px;
+ }
+ 
+ label{
+     display: inline-block;
+     margin-right: 10px;
+     width: 20%;
+     font-family: "黑体";
+ }
+ input[type="text"],input[type="password"]{
+     border-radius: 5px;
+     border: 1px solid #aaa;
+     outline:0;
+     padding: 6px 12px;
+     width: 300px;
+ }
+ input[type="text"]:focus,input[type="password"]:focus{
+     border-radius: 5px;
+     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+     border-color: #66afe9;
+ }
+ input[type="button"]{
+     background-color: #2563AD;
+     border: none;
+     height: 35px;
+     color: #fff;
+     border-radius: 5px;
+     padding: 6px 12px;
+     outline:0;
+     float: right;
+     margin-right: 5px;
+ }
+ 
+ .info{
+     font-size: 12px;
+     color: #999;
+     margin:5px 0 0 0;
+     display: none;
+ }
+ 
+ .input-group{
+     display: inline-block;
+     vertical-align: top;
+ }
+ 
+ .form-group{
+     margin-bottom: 15px;
+ }
+ 

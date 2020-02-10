@@ -1,0 +1,104 @@
+<!-- 坦克大战-->
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Space Shooter Demo</title>
+		<style>
+			canvas {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background: transparent;
+			}
+			#background {
+				z-index: -2;
+			}
+			#main {
+				z-index: -1;
+			}
+			#ship {
+				z-index: 0;
+			}
+			.score {
+				position: absolute;
+				top: 5px;
+				left: 480px;
+				color: #FF7F00;
+				font-family: Helvetica, sans-serif;
+				cursor: default;
+			}
+			.game-over {
+				position: absolute;
+				top: 100px;
+				left: 210px;
+				color: #FF7F00;
+				font-family: Helvetica, sans-serif;
+				font-size: 30px;
+				cursor: default;
+				display: none;
+			}
+			.game-over span {
+				font-size: 20px;
+				cursor: pointer;
+				position: relative;
+				left: 50px;
+			}
+			.game-over span:hover {
+				color: #FFD700;
+			}
+            .load{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: grey;
+            z-index: 3;
+            width: 600px;
+            height: 360px;
+        }
+        .go{
+            position: absolute;
+            top:150px;
+            left: 50%;
+            width: 324px;
+            height: 42px;
+            text-align: center;
+            margin-left: -164px;
+            background: url(image/bar.png) 0 bottom no-repeat;
+        }
+        #progress{
+           width:0;
+           height: 16px;
+           position: absolute;
+           left: 2px;
+           bottom: -13px;
+           background: url(image/bar_line.gif);
+        }
+		</style>
+	</head>
+	<body >
+    <div class="load">
+      <div class="go">数据转入中.....<span id="proNumber">0%</span>
+        <p id="progress"></p>
+      </div>
+    </div>
+		<canvas id="background" width="600" height="360">
+			Your browser does not support canvas. Please try again with a different browser.
+        </canvas>
+        <!--这个画布用作敌船和子弹-->
+		<canvas id="main" width="600" height="360">
+    </canvas>
+        <!--这个画布用作我方飞船，且飞船只能在1/4的画布上移动-->
+		<canvas id="ship" width="600" height="360">
+		</canvas>
+		<div class="score">SCORE: <span id="score"></span></div>
+		<div class="game-over" id="game-over">GAME OVER<p><span id="restart" >Restart</span></p>
+		</div>
+		<script src="tank.js"></script>
+	</body>
+</html> 
+
+
+
+

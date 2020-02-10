@@ -1,0 +1,167 @@
+<!--
+	ife32
+	表单工厂能够根据JSON格式的配置文件自动生成表单
+	-->
+  <!DOCTYPE html>
+  <html>
+  <head lang="en">
+      <meta charset="UTF-8">
+      <title>任务三十二：表单（四）实现表单自动生成工厂</title>
+      <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+  <main>
+      <div  class="clear-fix">
+          <section class="config">
+              <h1>表单一配置</h1>
+              <textarea id="form1-config">{
+                  "name": {
+                      "id": "name1",
+                      "label": "姓名",
+                      "type": "text",
+                      "validators": ["isNotEmpty","isValidName"],
+                      "rule": "必填，长度为4~16个字符",
+                      "success": "姓名格式输入正确"
+                  },
+                  "submit": {
+                      "id": "validate1",
+                      "value": "验证",
+                      "type": "button",
+                      "fail": "提交失败",
+                      "success": "提交成功"
+                  }
+              }</textarea>
+              <br/>
+              <input type="button" value="生成表单" id="form1-create"/>
+          </section>
+  
+          <section>
+              <h1>表单一</h1>
+              <div  id="form1-factory"  class="clear-fix"></div>
+          </section>
+      </div>
+      <div class="clear-fix">
+          <section class="config">
+              <h1>表单二配置</h1>
+              <textarea id="form2-config">{
+      "name": {
+          "id": "name2",
+          "label": "姓名",
+          "type": "text",
+          "validators": [
+              "isNotEmpty",
+              "isValidName"
+          ],
+          "rule": "必填，长度为4~16个字符",
+          "success": "姓名格式输入正确"
+      },
+      "email": {
+          "id": "email2",
+          "label": "邮箱",
+          "type": "text",
+          "validators": [
+              "isEmpty",
+              "isValidEmail"
+          ],
+          "rule": "非必填，服从邮箱规则",
+          "success": "邮箱格式输入正确"
+      },
+      "password": {
+          "id": "password2",
+          "label": "密码",
+          "type": "password",
+          "validators": [
+              "isNotEmpty",
+              "isValidPassword"
+          ],
+          "rule": "必填，必须是英文字母和数字，且长度在8~20之间",
+          "success": "密码格式输入正确"
+      },
+      "repassword": {
+          "id": "repassword2",
+          "label": "确认密码",
+          "type": "password",
+          "validators": [
+              "isNotEmpty",
+              "isValidPassword",
+              [
+                  "isEqualTo",
+                  "密码"
+              ]
+          ],
+          "compare": "password2",
+          "rule": "必填，长度为4~16个字符，且与密码一致",
+          "success": "两次密码输入一致"
+      },
+      "phone": {
+          "id": "phone2",
+          "label": "手机号码",
+          "type": "text",
+          "validators": [
+              "isNotEmpty",
+              "isValidMobile"
+          ],
+          "rule": "必填，请输入11位手机号码",
+          "success": "手机格式输入正确"
+      },
+      "sparePhone": {
+          "id": "sparephone2",
+          "label": "备用手机号码",
+          "type": "text",
+          "validators": [
+              "isEmpty",
+              "isValidMobile",
+              [
+                  "isNotEqualTo",
+                  "手机号码"
+              ]
+          ],
+          "compare": "phone2",
+          "rule": "非必填，请输入11位手机号码，且不能与上面手机号码相同",
+          "success": "备用手机号码格式输入正确"
+      },
+                      "date": {
+          "id": "date2",
+          "label": "日期",
+          "type": "text",
+          "validators": [
+              "isNotEmpty",
+              "isValidDate"
+          ],
+              "rule": "必填，例如2016-04-17",
+          "success": "日期格式输入正确"
+      },
+      "submit": {
+          "id": "validate2",
+          "value": "验证",
+          "type": "button",
+          "fail": "提交失败",
+          "success": "提交成功"
+      }
+  }</textarea>
+              <br/>
+              <input type="button" value="生成表单" id="form2-create"/>
+          </section>
+          <section>
+              <h1>表单二</h1>
+              <div  id="form2-factory"  class="clear-fix"></div>
+          </section>
+      </div>
+      <article>
+          <h1>使用说明</h1>
+          <p>表单工厂能够根据JSON格式的配置文件自动生成表单</p>
+          <p>字段如下</p>
+          <p>"id": //"唯一标识符",</p>
+          <p>"type": //表单类型，目前只支持 text/password/button,</p>
+          <p>"validators"://校验规则，支持的规则有：isNotEmpty/isEmpty, isNotEqualTo/isEqualTo, isValidName, isValidPassword, isValidIdentity, isValidDate, isValidMobile, isValidEmail
+              <br/>
+              注意: isNotEqualTo/isEqualTo的表单必须包含compare字段，表示与哪个选项框对比</p>
+      </article>
+  </main>
+  <script src="../utils.js"></script>
+  <script src="ValControl.js"></script>
+  <script src="Validator.js"></script>
+  <script src="FormsFactory.js"></script>
+  <script src="Main.js"></script>
+  </body>
+  </html> 

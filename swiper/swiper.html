@@ -1,0 +1,100 @@
+
+<!--js实现轮播效果 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js实现轮播图</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#container{
+		width: 960px;
+		overflow: hidden;
+		position:relative;
+		height: 540px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+	#container:hover .arror{
+		display: block;
+	}
+	#content{
+		width:5760px;
+		position: absolute;
+		z-index: 1;
+		
+	}
+	img{
+		float: left;
+	}
+	#button{
+		position:absolute;
+		z-index: 2;
+		height: 20px;
+		width: 100px;
+		bottom: 20px;
+		left:430px;
+	}
+	#button span{
+		display: inline-block;
+		border:1px solid black;
+		border-radius:50%;
+		background-color: black;
+		width: 10px;
+		height: 10px;
+		cursor: pointer;
+	}
+	#button .on{
+		background: orange;
+	}
+	.arror{
+		position:absolute;
+		z-index:3;
+		font-size: 60px;
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		line-height: 59px;
+		top:250px;
+		background: rgba(0,0,0,0.2); 
+		cursor: pointer;
+		display: none;
+	}
+	.arror:hover{
+		background: rgba(0,0,0,0.4);
+	}
+	#pre{
+		left:20px;
+	}
+	#next{
+		right: 20px;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="content" style="left:-960px">
+			<img src="./x17.jpg" style="width: 960px; height: 540px" >
+			<img src="./x6.jpg" style="width: 960px; height: 540px" >
+			<img src="./x23.jpg" style="width: 960px; height: 540px" >
+			<img src="./03.jpg" style="width: 960px; height: 540px" >
+			<img src="./x17.jpg" style="width: 960px; height: 540px" >
+			<img src="./x6.jpg" style="width: 960px; height: 540px" >
+		</div>
+		<div id="button" >
+		
+			<span index="1" class="on"></span>
+			<span index="2"></span>
+			<span index="3"></span>
+			<span index="4"></span>
+		</div>
+		<a herf="javascript:void(0)" class="arror" id="pre">&lt;</a>
+		<a herf="javascript:void(0)" class="arror" id="next">&gt;</a>
+	</div>
+	<script src="../utils.js"></script>
+	<script src="swiper.js"></script>
+</body>
+</html>
